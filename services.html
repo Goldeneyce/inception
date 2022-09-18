@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Karizma Kraft</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet"
+  href="http://fonts.googleapis.com/css?family=Lato:100,300,400">
+</head>
+<body>
+    <section class="row group row-alt">
+        <section class="logo">
+    <h1>
+        <a href="index.html">Karizma <br> Kraft</a>
+    </h1>
+    <h2>
+        <em>Feel the ambience . . .</em>
+    </h2>
+</section>
+</section>
+   
+    <header class="primary-header container">
+        <nav class="nav primary-nav">
+            <ul>
+            <li><a href="index.html">Home</a></li><!--
+            --><li><a href="services.html">Services</a></li><!--
+            --><li><a href="gallery.html">Gallery</a></li><!--
+            --><li><a href="sign-in.html">Login</a></li><!---
+            --><li><a href="about.html">About</a></li><!--
+            --><li><a href="contact.html"></li>Contact Us</a>
+            </ul>
+        </nav>
+    </header>
+    <!---Body section-->
+<section class="row">
+
+    <button id="prompt" onclick="sayHi()"> this is a button</button>
+
+<input type="text" placeholder="whatever you like">
+</section>
+<section>
+<textarea id="reviewText" rows="10" cols="70" placeholder="write your review..."> </textarea>
+<br>
+<button onclick="addReview()">Add Review</button>
+<p id="addedReview"></p>
+
+    </section>
+
+   <!---- <section class="row">
+        <form>
+            <fieldset class="account-info">
+              <label>
+                Username
+                <input id="usernameInput" type="text" placeholder="Username" >
+              </label>
+               <label>
+                Password
+                <input type="password" placeholder="password" name="password">
+              </label>
+            </fieldset>
+            <fieldset class="account-action">
+              <button onclick="register()">Register</button>
+              <label>
+                  
+                <!-- <input type="checkbox" name="remember"> Stay signed in
+              </label>
+            </fieldset>
+          </form>
+        </section> --->
+    
+       <section>
+        <input id="usernameInput" type="text" placeholder="Username">
+
+        <button onclick="register()">Register</button>
+        <p id="message"></p>
+       </section>
+    
+    
+    
+
+<!--Footer-->
+<footer class="primary-footer container group">
+    <section class="hero container">
+    <nav class="">
+        <a href="index.html">Home</a>
+        <a href="services.html">Services</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact Us</a>
+    </nav>
+    <small> &copy; Goldenglow 2020 </small>
+</footer>
+    
+<script src="script.js"> </script>
+</body>
+</html>

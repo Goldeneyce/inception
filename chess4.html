@@ -1,0 +1,352 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML4.01//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="Author" content="Óscar Toledo Gutiérrez">
+<meta name="Language" content="en">
+<meta name="Robots" content="all">
+<meta name="Description" content="The world's smallest chess program written
+  in Javascript language: Toledo Javascript Chess, playing full chess movements
+  in 2159 bytes or 1251 bytes (simplified interface). Also my winning entry of
+  JS1K, a chess program in 1K of Javascript">
+<title>Toledo Javascript Chess Game</title>
+<link href="estilos.css" type="text/css" rel="stylesheet">
+<!--[if lt IE 7]><link href="estilos_ie.css" type="text/css" rel="stylesheet"><![endif]-->
+<link rel="alternate" hreflang="es" href="chess4_es.html">
+<script src="efectos.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="logo" class="logo">
+<img src="img/logo.png" />
+</div>
+<div class="menu">
+<div class="sup"><span class="izq"></span><span class="der"></span></div>
+<div class="med"><a href="index.html">Main page</a></div>
+<div class="med"><a href="emulator.html">Intel 8080 emulator</a></div>
+<div class="med"><a href="chess.html">Chess programs</a></div>
+<div class="med"><a href="contest.html">Contests</a></div>
+<div class="med"><a href="store.html">Store</a></div>
+<div class="med"><a href="retro.html">Retrogaming</a></div>
+<div class="med"><a href="faq.html">FAQ</a></div>
+<div class="med"><a href="links.html">Links</a></div>
+<div class="med"><a href="author.html">About me</a></div>
+<div class="inf"><span class="izq"></span><span class="der"></span></div>
+<div class="sup"><span class="izq"></span><span class="der"></span></div>
+<div class="med"><a href="chess4_es.html">Ver en español</a></div>
+<div class="inf"><span class="izq"></span><span class="der"></span></div>
+</div>
+<div class="contenido">
+<div class="sup"><span class="izq"></span><span class="der"></span></div>
+<div class="med">
+<h1>Toledo Javascript Chess Game</h1>
+<div class="atajos">Sections:
+<ul>
+<li><a href="#sour">Source code</a></li>
+<li><a href="#fork">Source code forks</a></li>
+<li><a href="#js1k">Tiny chess for the JS1K contest</a></li>
+<li><a href="#othe">Other small Javascript Chess games</a></li>
+<li><a href="#link">Related links</a></li>
+</ul>
+</div>
+<div class="texto">Around January 2007 I remembered the similarities between C
+and Javascript, and I was wondering if it would be possible to do a
+translation of my recent <a href="chess2.html">winning entry</a> (19th IOCCC,
+Most Portable Chess Set), I did it on an afternoon and the result is the
+current world's smallest chess program in Javascript, check also my
+<a href="#js1k">Tiny Chess for JS1K</a>.</div>
+<div class="texto">Play it online:</div>
+<ul>
+<li><a href="toledo_javascript_chess_1.html">Toledo Javascript Chess</a>,
+pieces as letters. 2159 bytes (2.1 kb)
+<li><a href="archive/toledo_javascript_chess_3.html">Toledo Javascript Chess</a>,
+pieces as Unicode graphics. 2299 bytes (2.2 kb)
+<li><a href="toledo_javascript_chess_2.html">Toledo Javascript Chess</a>,
+pieces as GIF graphics. 3130 bytes (3.1 kb)
+<li><a href="archive/toledo_javascript_chess.zip">Compressed files</a>, useful to
+play locally.
+</ul>
+<div class="texto">You can select the
+promotion piece using the control. Some browsers will show you a
+message of script being too slow, please indicate that you DON'T want to
+stop the script.</div>
+<div class="texto">See it on action, to play click piece to move and then click
+destination square:</div>
+<div class="texto" align="center">
+<iframe src="toledo_javascript_chess_2.html" width="400" height="410" scrolling="no" frameborder="no" id="chess"></iframe></div>
+<div class="texto">If you want to play with black's pieces, click this
+<input type="button" value="button" onclick="with(document.getElementById('chess').contentWindow)setTimeout('X(0,0,0,21,u,2),X(0,0,0,21,u,1),W()',250);">
+to force a move, you will need to click every time after you do a move.</div>
+<a name="sour"></a><h2>The source code</h2>
+<div class="texto">Most of the code is a resemblance of the original code,
+except for the pointers translated to array-access. Recently I updated the core
+with code from Toledo Nanochess Nov/20/2009.</div>
+<div class="texto">Play level is fixed at 3-ply depth, you can modify it
+(search on the source code for <tt>/*ply*/</tt>), be careful as every extra ply
+is an order of magnitude more slow.</div>
+<div class="texto">A brief description of the inner workings of this code can
+be found on the page of <a href="chess1.html">Toledo Chess 1</a> or check
+my <a href="chess3.html#book">Toledo Nanochess book</a>.</div>
+<pre><small>&lt;script&gt;//(c)2009 Oscar Toledo G.
+var B,i,y,u,b,I=[],G=120,x=10,z=15,M=1e4,l=[5,3,4,6,2,4,3,5,1,1,1,1,1,1,1,1,9,9
+,9,9,9,9,9,9,13,11,12,14,10,12,11,13,0,99,0,306,297,495,846,-1,0,1,2,2,1,0,-1,-
+1,1,-10,10,-11,-9,9,11,10,20,-9,-11,-10,-20,-21,-19,-12,-8,8,12,19,21];function
+X(w,c,h,e,S,s){var t,o,L,E,d,O=e,N=-M*M,K=78-h&lt;&lt;x,p,g,n,m,A,q,r,C,J,a=y?-x:x;
+y^=8;G++;d=w||s&&s&gt;=h&&X(0,0,0,21,0,0)&gt;M;do{if(o=I[p=O]){q=o&z^y;if(q&lt;7){A=q--&
+2?8:4;C=o-9&z?[53,47,61,51,47,47][q]:57;do{r=I[p+=l[C]];if(!w|p==w){g=q|p+a-S?0
+:S;if(!r&(!!q|A&lt;3||!!g)||(r+1&z^y)&gt;9&&q|A&gt;2){if(m=!(r-2&7))return y^=8,I[G--]=
+O,K;J=n=o&z;E=I[p-a]&z;t=q|E-7?n:(n+=2,6^y);while(n&lt;=t){L=r?l[r&7|32]-h-q:0;if(
+s)L+=(1-q?l[(p-p%x)/x+37]-l[(O-O%x)/x+37]+l[p%x+38]*(q?1:2)-l[O%x+38]+(o&16)/2:
+!!m*9)+(!q?!(I[p-1]^n)+!(I[p+1]^n)+l[n&7|32]-99+!!g*99+(A&lt;2):0)+!(E^y^9);if(s&gt;h
+||1&lt;s&s==h&&L&gt;z|d){I[p]=n,I[O]=m?(I[g]=I[m],I[m]=0):g?I[g]=0:0;L-=X(s&gt;h|d?0:p,L
+-N,h+1,I[G+1],J=q|A&gt;1?0:p,s);if(!(h||s-1|B-O|i-n|p-b|L&lt;-M))return W(),G--,u=J;
+J=q-1|A&lt;7||m||!s|d|r|o&lt;z||X(0,0,0,21,0,0)&gt;M;I[O]=o;I[p]=r;m?(I[m]=I[g],I[g]=0):
+g?I[g]=9^y:0;}if(L&gt;N||s&gt;1&&L==N&&!h&&Math.random()&lt;.5){I[G]=O;if(s&gt;1){if(h&&c-L
+&lt;0)return y^=8,G--,L;if(!h)i=n,B=O,b=p;}N=L;}n+=J||(g=p,m=p&lt;O?g-3:g+2,I[m]&lt;z|I[
+m+O-p]||I[p+=p-O])?1:0;}}}}while(!r&q&gt;2||(p=O,q|A&gt;2|o&gt;z&!r&&++C*--A));}}}while(
+++O&gt;98?O=20:e-O);return y^=8,G--,N+M*M&&N&gt;-K+1924|d?N:0;}B=i=y=u=0;while(B++&lt;
+120)I[B-1]=B%x?B/x%x&lt;2|B%x&lt;2?7:B/x&4?0:l[i++]|16:7;for(a=
+"&lt;table cellspacing=0 align=center&gt;",i=18;i&lt;100;a+=++i%10-9?
+"&lt;th width=40 height=40 onclick=Y("+i+") style='border:2px solid #aae' id=o"+i+
+" bgcolor=#"+(i*.9&1?"9090d0&gt;":"c0c0ff&gt;"):(i++,"&lt;tr&gt;"));
+a+="&lt;th colspan=8&gt;&lt;select id=t&gt;&lt;option&gt;Q&lt;option&gt;R&lt;option&gt;B";
+document.write(a+"&lt;option&gt;N&lt;/select&gt;&lt;/table&gt;");
+function W(){B=b;for(p=21;p&lt;99;++p)if(q=document.getElementById("o"+p)){q.
+innerHTML="&lt;img width=40 src="+(I[p]&z)+".gif&gt;";q.
+style.borderColor=p==B?"#ff0":"#aae";}}W();
+function Y(s){i=(I[s]^y)&z;if(i&gt;8){b=s;W();}else if(B&&i&lt;9){b=s;i=I[B]&z;if((i&
+7)==1&(b&lt;29|b&gt;90))i=14-document.getElementById("t").selectedIndex^y;X(0,0,0,21,
+u,1);if(y)setTimeout("X(0,0,0,21,u,2/*ply*/),X(0,0,0,21,u,1)",250);}}
+&lt;/script&gt;</small></pre>
+<a name="fork"></a><h2>Source code forks</h2>
+<div class="texto">This Javascript chess game has currently several forks,
+same core but different graphical interfaces:</div>
+<ul>
+<li>From Latvia by <a href="http://chessforeva.wordpress.com/">Chessforeva</a>,
+a <a href="http://chessforeva.appspot.com/C0_Toledo.htm">version with 3D
+board</a> includes zoom and rotation, also available as a
+<a href="http://www.google.lv/ig/adde?moduleurl=http://chessforeva.appspot.com/3Dtoledo.xml&source=imag">Google Gadget</a>.</li>
+<li>From Australia by Dr. Michael Stone,
+<a href="http://www.rooloose.com/81/toledo-chess-rooloose-version">Toledo Chess
+(rooloose version)</a> with better graphics and a
+<a href="http://www.rooloose.com/131/o_chesshtm-app-revisited">
+version for Android cellphones</a>.</li>
+<li>From Italy by Stefano Gioffré,
+<a href="http://forum.html.it/forum/showthread.php?threadid=1403946">version
+with better CSS rendering</a>, also
+<a href="http://htmlchess.sourceforge.net/demo/example.html">3-D version</a>
+based on a
+<a href="http://www.nihilogic.dk/labs/chess/">3D chessboard renderer</a> developed by
+<a href="http://blog.nihilogic.dk/">Jacob Seidelin</a>.</li>
+<li>From Turkey by Azer Koçulu,
+<a href="http://github.com/azer/toledo-chess">version at
+Github</a> with simple interface for bigger projects, used by same programmer
+in his site
+<a href="http://multiplayerchess.com/">multiplayerchess.com</a>.</li>
+<li>From United Kingdom by Phil Mainwaring,
+<a href="archive/chess.zip">version of Toledo Chess</a> with ingeniously
+integrated graphics using <tt>data</tt> protocol, sizes up at 2235 bytes.</li>
+<li>From Spain by Andrés Moreno,
+<a href="http://1kchess.an3.es">3 versions of Toledo Chess</a> with modified
+visualization and slight changes at core.</li>
+<li>From France by Frédéric Untz, <a href="http://www.elementaire.org/#/exercices/maths/problemes/jeudechecs/partie">version
+of my Javascript chess</a> modified so it helps to teach chess to
+children at <a href="http://www.elementaire.org">elementaire.org</a>.</li>
+<li>From USA by <a href="http://twitter.com/pecdev">Pedro Enrique</a>,
+<a href="https://gist.github.com/980224">version for use with Appcelerator</a>.</li>
+<li>An attempt to deobfuscate it
+<a href="https://github.com/bormand/nanochess">https://github.com/bormand/nanochess</a>.</li>
+<li>Another attempt by Raymond Hulha from Sweden
+<a href="https://github.com/rhulha/nanochess/tree/master/modularized2">https://github.com/rhulha/nanochess/tree/master/modularized2</a>.</li>
+<li>From Brazil by Marcelo Ricardo de Oliveira,
+<a href="http://www.codeproject.com/Articles/646113/Chesslings">Chesslings</a>, with walking pieces in chessboard.</li>
+<li>From Ecuador by Rubén Darío Jaramillo,
+<a href="archive/toledo_js_chess_960.html">Chess 960</a> (Fischer Random).</li>
+<li>From Ecuador by Rubén Darío Jaramillo,
+<a href="archive/toledo_js_chess_200_positions.html">Chess with 200 famous positions</a>.</li>
+<li>Port of <a href="http://bescott.org/nanochess/">Toledo Javascript Chess</a>
+to *.coffee by Ben Scott.</li>
+<li><a href="http://databoss.starschema.net/tableau-chess-game-using-tableau-js-api/">Tableau Chess</a>
+another game using the engine.</li>
+<li>From France, ecrucru has created a version of <a href="https://github.com/ecrucru/toledo-uci">Toledo Javascript Chess with UCI interface</a> that runs over node.js</li>
+</ul>
+<a name="js1k"></a><h2>Tiny chess for the JS1K contest</h2>
+<div class="texto">The <a href="http://js1k.com/">JS1K contest</a> started on
+Sunday, August 1, 2010, organized by
+<a href="http://qfox.nl/">Peter van der Zee</a> with
+<a href="http://mir.aculo.us/">Thomas Fuchs</a> (author of
+<a href="http://script.aculo.us/">Scriptaculous</a>),
+<a href="http://twitter.com/rem">Remy Sharp</a>,
+<a href="http://twitter.com/patrick_h_lauke">Patrick H. Lauke</a> and
+<a href="http://twitter.com/voodootikigod">Christopher Williams</a> as judges,
+all expert Javascript programmers.
+The contest's objective was simple, the participants should create the most
+impressive Javascript program in 1024 bytes, that is 1 kilobyte, without using
+any external file. The contest period closed on September 10.</div>
+<div class="texto">I had news of the contest in August 8 and came to my mind
+the challenge of writing a chess in 1K of Javascript, so based on my 2.2K
+Javascript chess in six hours I managed to crunch it to 1K. I had to remove
+castling, en passant and limit promotion to queen, leaving a simple chessboard
+with letters for chessmen, click in origin square and target square to move
+pieces.</div>
+<div class="texto">Next day I sent it to the
+contest, you can still play it online as the
+<a href="http://js1k.com/demo/226">entry #226</a>. Take note that the 1018
+octets of my Javascript code include an artificial intelligence and also the
+user's interface and chessboard visualization. Not an easy thing as noted
+by <a href="http://topsy.com/js1k.com/demo/226">several
+people</a>.</div>
+<div class="imagen" style="float:left;width:200px;"><img src="img/tiny_chess_1.gif" alt="First version of Tiny Chess"><br>
+First version of Tiny Chess</div>
+<div class="texto">Two hours after publication, the enthusiast
+<a href="http://twitter.com/kamathln">Laxminarayan Kamath</a> sent me an
+e-mail suggesting me to put
+<a href="http://en.wikipedia.org/wiki/Chess_symbols_in_Unicode">Unicode
+graphics</a> and an optimization tip that I would use latter.
+On Wednesday 11 in other six
+hours of work I cutted more than 50 bytes, making enough space to put Unicode
+graphics for the chess pieces, I sized up the chessboard for comfortable
+visualization and also illuminated clicked square. Same day I sent this
+update to the contest (it obtained the
+<a href="http://js1k.com/demo/298">number 298</a>), and the graphics
+<a href="http://topsy.com/js1k.com/demo/298">surprised to
+the public</a>.</div>
+<div class="texto">Some days after Spaniard
+<a href="http://twitter.com/romancortes">Román Cortés</a> kindly shared with
+me optimization tips for saving bytes, at same time I rewrote the artificial
+intelligence to save space and with the extra space introduced variety in
+gameplay (<tt>Math.random</tt>) also instant update of chessboard on final
+click. This was the third update
+(<a href="http://js1k.com/demo/435">entry 435</a>) and got excellent and
+multitude of comments,
+<a href="http://topsy.com/js1k.com/demo/435">hundreds of
+mentions in Twitter</a> and thousands of visitors from
+United States, Spanish, Chinese, Japanese,
+Russian, French and German forums
+and blogs. I've estimated that this version was played by at least 25,000
+people around the world, this number was greatly surpassed by my last
+version played by an estimate of 100,000 people.</div>
+<div class="imagen" style="float:right;width:250px;"><img src="img/tiny_chess_2.gif" alt="The third version of Tiny Chess"><br>
+The third version of Tiny Chess</div>
+<div class="texto">An anonymous German reported that was easy to force my
+program to fool's mate, I realized that an extra «intelligence» would solve
+the problem and also I did illumination of last moved piece. This was the
+fourth update
+(<a href="http://js1k.com/demo/699">entry 699</a>).</div>
+<div class="texto">Casually same day that I did the update, I received an
+e-mail from English
+<a href="http://twitter.com/mattround">Matt Round</a>, he informed me of his
+article about a <a href="http://malevolent.com/524">game of my chess versus
+the legendary 1K ZX81 Chess</a>, and my chess drew instead of giving mate.
+I knew immediately it could be enhanced, so I was on the task again, was very
+difficult to «crunch» these last bytes (here I finally used Kamath's
+optimization tip), I did it and was my last update
+(<a href="http://js1k.com/demo/750">entry 750</a>) before contest closed.</div>
+<div class="texto">And it won!, on September 25, 2010, Thomas Fuchs and Remy
+Sharp demonstrated the winning JS1K entries at Berlin, Germany, during the
+<a href="http://jsconf.eu/">jsConf.eu</a> conference, my Tiny Chess got 2nd
+place, triggering a
+<a href="http://topsy.com/js1k.com/demo/750">wave of
+mentions</a>.</div>
+<div class="texto">Here is the definitive version of my Javascript Chess in
+1023 bytes, note that the original version was written in a single line that
+has to be divided to put it here, also this is pure Javascript, must be
+invocated by HTML markers such as this <tt>&lt;body&gt; &lt;script
+src="tiny_chess.js"&gt; &lt;/body&gt;</tt></div>
+<ul>
+<li><a href="archive/tiny_chess_1.html">To play locally this Tiny Chess do
+click here</a> or <a href="http://js1k.com/demo/750">play it</a> at the JS1K
+site. Also you can get the commented source code with
+my <a href="chess3.html#book">Toledo Nanochess book</a>.</li>
+</ul>
+<pre><small>// Tiny Chess (c)2010 Óscar Toledo G.
+for(B=i=y=u=b=i=5-5,x=10,I=[],l=[];B++&lt;304;
+I[B-1]=B%x?B/x%x&lt;2|B%x&lt;2?7:B/x&4?0:l[i++]=("ECDFBDCEAAAAAAAA"+
+"IIIIIIIIMKLNJLKM@G@TSb~?A6J57IKJT576,+-48HLSUmgukgg OJNMLK  IDHGFE")
+.charCodeAt(y++)-64:7);function X(c,h,e,s){c^=8;for(var o,S,C,A,R,T,G,d=e&&X(c,0
+)&gt;1e4,n,N=-1e8,O=20,K=78-h&lt;&lt;9;++O&lt;99;)if((o=I[T=O])&&(G=o^c)&lt;7){A=G--&2?8:4;C=
+o-9?l[61+G]:49;do if(!(R=I[T+=l[C]])&&!!G|A&lt;3||(R+1^c)&gt;9&&G|A&gt;2){if(!(R-2&7)
+)return K;n=G|(c?T&gt;29:T&lt;91)?o:6^c;S=(R&&l[R&7|32]*2-h-G)+(n-o?110:!G&&(A&lt;2)+1);
+if(e&gt;h||1&lt;e&e==h&&S&gt;2|d){I[T]=n;I[O]=0;S-=X(c,h+1,e,S-N);if(!(h||e-1|B-O|T-b|S&lt;
+-1e4))return W(),c&&setTimeout("X(8,0,2),X(8,0,1)",75);I[O]=o;I[T]=R}if(S&gt;N||!h
+&S==N&&Math.random()&lt;.5)if(N=S,e&gt;1)if(h?s-S&lt;0:(B=O,b=T,0))break}while(!R&G&gt;2||(
+T=O,(G||A&gt;2|(c?O&gt;78:O&lt;41)&!R)&&++C*--A))}return-K+768&lt;N|d&&N}function W(){i=
+"&lt;table&gt;";for(u=18;u&lt;99;document.body.innerHTML=i+=++u%x-9?
+"&lt;th width=60 height=60 onclick='I[b="+u+
+"]&gt;8?W():X(0,0,1)'style='font-size:50px'bgcolor=#"+(u-B?u*.9&1||9:"d")+
+"0f0e0&gt;&#"+(I[u]?9808+l[67+I[u]]:160):u++&&"&lt;tr&gt;")B=b}W()</small></pre>
+<div class="texto">I managed to get a version with castling and en
+passant in 1024 bytes (yes, it is possible!), but the visualization stood in
+black and white, also the gameplay quality is bad, works as a prototype, but
+was not nice enough for the contest.
+It was archived (although I can publish it here if there are interesting
+offers :)), in preference to an expanded version of my final entry with
+castling and en passant, here is that version in 1251 bytes.</div>
+<ul>
+<li><a href="archive/tiny_chess_2.html">To play this chess make click here</a>.</li>
+</ul>
+<pre><small>// Chess (c)2010 Óscar Toledo G.
+for(B=i=y=u=b=i=5-5,x=10,z=15,I=[],l=[];l[B]=("ustvrtsuqqqqqqqq"+
+"yyyyyyyy}{|~z|{}@G@TSb~?A6J57IKJT576,+-48HLSUmgukgg OJNMLK  IDHGFE")
+.charCodeAt(B)-64,B++&lt;120;I[B-1]=B%x?B/x%x&lt;2|B%x&lt;2?7:B/x&4?0:l[u++]:7);
+function X(c,h,e,S,s){c^=8;for(var T,o,L,E,D,O=20,G,N=-1e8,n,g,d=S&&X(c,0)&gt;1e4,
+C,R,A,K=78-h&lt;&lt;9,a=c?x:-x;++O&lt;99;)if((o=I[T=O])&&(G=o&z^c)&lt;7){A=G--&2?8:4;C=9-o&
+z?l[61+G]:49;do{R=I[T+=l[C]];g=D=G|T+a-e?0:e;if(!R&&(G||A&lt;3||g)||(1+R&z^c)&gt;9&&G
+|A&gt;2){if(!(2-R&7))return K;for(E=n=G|I[T-a]-7?o&z:6^c;E;E=!E&&!d&&!(g=T,D=T&lt;O?g
+-3:g+2,I[D]&lt;z|I[D+O-T]|I[T+=T-O])){L=(R&&l[R&7|32]*2-h-G)+(G?0:n-o&z?110:(D&&14
+)+(A&lt;2)+1);if(S&gt;h||1&lt;S&S==h&&L&gt;2|d){I[T]=n,I[g]=I[D],I[O]=D?I[D]=0:0;L-=X(c,h+1
+,E=G|A&gt;1?0:T,S,L-N);if(!(h||S-1|B-O|T-b|L&lt;-1e4))return W(y=E),c&&setTimeout(
+"X(8,0,y,2),X(8,0,y,1)",75);E=1-G|A&lt;7|D|!S|R|o&lt;z||X(c,0)&gt;1e4;I[O]=o;I[T]=R;I[D
+]=I[g];D?I[g]=G?0:9^c:0}if(L&gt;N||!h&L==N&&Math.random()&lt;.5)if(N=L,S&gt;1)if(h?s-L&lt;0
+:(B=O,b=T,0))return N}}}while(!R&G&gt;2||(T=O,G|A&gt;2|z&lt;o&!R&&++C*--A))}return-K+
+768&lt;N|d&&N}function W(){i="&lt;table&gt;";for(u=18;u&lt;98;document.body.innerHTML=i+=++
+u%x-9?"&lt;th width=60 height=60 onclick='I[b="+u+
+"]&8?W():X(0,0,y,1)'style='font-size:50px'bgcolor=#"+(u-B?u*.9&1||9:"d")+
+"0f0e0&gt;&#"+(I[u]&15?9808+l[67+(I[u]&15)]:160)+";":u++&&"&lt;tr&gt;")B=b}W()</small></pre>
+<div class="texto">Go up on this page to download the ZIP file with the
+source codes.</div>
+<a name="othe"></a><h2>Other small Javascript chess programs</h2>
+<div class="texto">Douglas Bagnall from New Zealand wrote the first 5K
+Javascript Chess Game for the now defunct
+<a href="http://www.the5k.org/">5K Javascript Contest</a>.
+Current smallest programs based on his source exceeds
+4 kilobytes. These programs and others are available at
+<a href="http://p4wn.sourceforge.net/">http://p4wn.sourceforge.net/</a>.</div>
+<div class="texto">The Mathematician John A. Moody from the Warwick University
+at United Kingdom has also written his own
+<a href="http://www.maths.warwick.ac.uk/~moody/chess.html">small Javascript
+chess game</a> in 2.7 kilobytes, currently doesn't detect illegal moves and
+doesn't handle castling nor en passant.</div>
+<a name="link"></a><h2>Related links</h2>
+<ul>
+<li>The <a href="chess3.html#book">Toledo Nanochess book</a> contains the
+commented source code of the programs where the Javascript one is based.</li>
+<li><a href="http://jorgerubira.blogspot.com/">Jorge Rubira</a> from the
+Spanish <a href="http://www.javahispano.org/">Asociación Javahispano</a> made
+me an
+<a href="http://www.javahispano.org/contenidos/es/javahispano_podcast__098__javascript_1k_entrevista_a_oscar_toledo/">interview
+in Javahispano Podcast number 98</a> (audio in Spanish)</li>
+<li>Milenio newspaper (Mexico) published a note about me
+"<a href="http://www.milenio.com/node/546303">Mexican wins second place in
+worldwide contest of Javascript programmers</a>." (Spanish)</li>
+<li>Quo Magazine (Mexico) published a small note about me, issue 157 of
+November 2010.</li>
+<li>Alan Lazalde from <a href="http://bitelia.com/">Bitelia</a> comments about my
+<a href="http://bitelia.com/2010/09/motor-de-ajedrez-javascript-de-1014-bytes" hreflang="es">Javascript chess engine in 1014 bytes</a> (in Spanish).</li>
+<li>The <a href="http://malevolent.com/524">war of 1K chess programs</a>,
+check this interesting Matt Round's article.</li>
+<li>The prestigious German magazine <a href="http://www.chip.de/">Chip</a> made
+a selection of the coolest Javascript demos from the
+<a href="http://js1k.com/">JS1K contest</a>, see
+"<a href="http://www.chip.de/bildergalerie/Die-coolsten-Javascript-Demos-mit-1KB-Galerie_44202334.html?show=8" hreflang="de">Die coolsten Javascript Demos mit 1KB Galerie</a>"
+(in German)</li>
+<li>Article "<a href="http://canvasworld.de/tiny-chess-ein-schachspiel-in-1024-bytes.html" hreflang="de">Tiny Chess - Ein Schachspiel in 1024 bytes</a>"
+(in German) published in <a href="http://canvasworld.de/" hreflang="de">Canvas
+World</a></li>
+</li>
+</ul>
+<div class="fecha">Last modified: Dec/29/2017</div>
+</div>
+<div class="inf"><span class="izq"></span><span class="der"></span></div>
+</div>
+</body>
+</html>

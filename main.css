@@ -49,6 +49,10 @@ body {
    backdrop-filter: opacity(50%);
    margin:0px;
 }
+
+.currentPage {
+  color: green;
+}
 /*
   ========================================
   Grid

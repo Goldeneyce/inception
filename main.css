@@ -329,6 +329,14 @@ a:hover {
 .primary-footer a {
   color: #fff;
 }
+
+.currentPage {
+  color: #a9b2b9;
+}
+.currentpage {
+  color: #a9b2b9;
+}
+
 .primary-header a:hover ,
 .primary-footer a:hover {
   color: #219c82;

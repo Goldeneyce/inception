@@ -322,13 +322,6 @@ a:hover {
   color: #fff;
 }
 
-.currentPage a {
-  color: #a9b2b9;
-}
-.currentpage a {
-  color: #a9b2b9;
-}
-
 .primary-header a:hover ,
 .primary-footer a:hover {
   color: #219c82;
@@ -511,7 +504,12 @@ video
   height: 190px;
 }
 
-
+.currentPage a {
+  color: #a9b2b9;
+}
+.currentpage a {
+  color: #a9b2b9;
+}
 
 
 

@@ -505,10 +505,10 @@ video
 }
 
 a .currentPage {
-  color: #a9b2b9;
+  textcolor: #a9b2b9;
 }
 a .currentpage {
-  color: #a9b2b9;
+  text-color: #a9b2b9;
 }
 
 

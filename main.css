@@ -504,10 +504,10 @@ video
   height: 190px;
 }
 
-.currentPage a {
+a .currentPage {
   color: #a9b2b9;
 }
-.currentpage a {
+a .currentpage {
   color: #a9b2b9;
 }
 

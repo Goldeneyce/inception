@@ -322,10 +322,10 @@ a:hover {
   color: #fff;
 }
 
-.currentPage {
+.currentPage a {
   color: #a9b2b9;
 }
-.currentpage {
+.currentpage a {
   color: #a9b2b9;
 }
 

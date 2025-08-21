@@ -33,7 +33,7 @@
 
         document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu functionality
-    const mobileMenuToggle = document.querySelector('.mobile-menu-btn');
+    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
     const navMenu = document.querySelector('.nav ul');
     
     if (mobileMenuToggle && navMenu) {

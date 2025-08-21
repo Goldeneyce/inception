@@ -225,7 +225,13 @@ a:hover {
     border: none;
     font-size: 24px;
     cursor: pointer;
-    color: var(--primary);
+    
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    cursor: pointer;
+    z-index: 1000;
 }
 
 

@@ -173,22 +173,7 @@ a:hover {
     width: 100%;
 }
 
-.primary-header {
-    position: relative;
-    background: rgba(0, 0, 0, 0.8);
-    padding: 15px 0;
-}
 
-.mobile-menu-toggle {
-    display: none;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-    z-index: 1000;
-}
 
 .nav {
     text-align: center;
@@ -218,6 +203,24 @@ a:hover {
 .nav a.currentpage {
     color: #219c82;
 }
+
+.primary-header {
+    position: relative;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 15px 0;
+}
+
+.mobile-menu-toggle {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
 
 .mobile-menu-btn {
     display: none;

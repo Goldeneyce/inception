@@ -1,4 +1,5 @@
 {
     "code-runner.clearPreviousOutput": true,
-    "code-runner.defaultLanguage": "javascript"
+    "code-runner.defaultLanguage": "javascript",
+    "liveServer.settings.port": 5501
 }

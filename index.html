@@ -3,133 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karizma Kraft</title>
-    <link rel="stylesheet" href="main.css">
+    <title>Karizma Kraft - Professional Painting Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400" rel="stylesheet">
-    <style>
-        /* CSS will be placed here for reliability */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        
-        body {
-            font-family: 'Lato', sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(360deg, rgb(68, 125, 247), rgb(0, 109, 128));
-        }
-        
-        /* Add other styles from the CSS section below */
-    </style>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
     <!-- Mobile Menu Toggle -->
-    <div class="mobile-menu-btn">
+    <button class="mobile-menu-btn">
         <i class="fas fa-bars"></i>
-    </div>
-
+    </button>
+    
     <!-- Logo Section -->
-    <section class="logo-section">
-        <div class="logo">
-            <h1><a href="index.html"><em>Hello <br> Viche!</em></a></h1>
-            <h2><em>Feel the ambience...</em></h2>
-        </div>
+    <section class="row group row-alt">
+        <section class="logo">
+            <h1>
+                <a href="index.html"><em>Hello <br> Viche!</em></a>
+            </h1>
+            <h2>
+                <em>Feel the ambience . . .</em>
+            </h2>
+        </section>
     </section>
    
     <!-- Navigation -->
-    <header class="main-header">
-        <nav class="main-nav">
+    <header class="primary-header container">
+        <nav class="nav primary-nav">
             <ul>
-                <li><a class="active" href="index.html">Home</a></li>
+                <li><a class="currentpage" href="index.html">Home</a></li>
                 <li><a href="services.html">Services</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="sign-in.html">Login</a></li>
                 <li><a href="about.html">About</a></li>
                 <li><a href="contact.html">Contact Us</a></li>
                 <li><a href="toledo_javascript_chess_3.html">Play Chess</a></li>
+                
             </ul>
         </nav>
     </header>
 
-    <!-- Main Content -->
-    <main class="container">
-        <section class="intro">
-            <em>Welcome!</em>
+    <!-- Hero Section -->
+    <section class="intro">
+       <em>Welcome!</em>
+    </section>
+    
+    <section class="hero container">
+        <p>
+            Dedicated to the art of <em>beautifying</em> your environment. 
+            At KarizmaKraft, we are dedicated to giving your home the look and feel that you desire.
+        </p>
+        <a class="btn btn-alt" href="Contact.html">Contact us</a>
+    </section>
+   
+    <!-- Services Section -->
+    <div class="grid">
+        <section class="teaser col-1-3">
+            <h5>Interior painting </h5>
+            <div class="image-container" data-full="https://images.unsplash.com/photo-1615529162924-f8605388463a">
+                <img src="https://images.unsplash.com/photo-1615529162924-f8605388463a?auto=format&fit=crop&w=600&q=80" alt="Beautiful bedroom setting">
+            </div>
+            <div class="image-container" data-full="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a">
+                <img src="https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?auto=format&fit=crop&w=600&q=80" alt="Living room painting">
+            </div>
+            <div class="image-container" data-full="https://images.unsplash.com/photo-1617103996702-96ff29b1c467">
+                <img src="https://images.unsplash.com/photo-1617103996702-96ff29b1c467?auto=format&fit=crop&w=600&q=80" alt="Modern interior">
+            </div>
         </section>
         
-        <section class="hero">
-            <p>Dedicated to the art of <em>beautifying</em> your environment. 
-            At KarizmaKraft, we are dedicated to giving your home the look and feel that you desire.</p>
-            <a class="btn" href="contact.html">Contact us</a>
-        </section>
-
-        <!-- Services Grid -->
-        <div class="services-grid">
-            <section class="service-card">
-                <h3>Interior Painting</h3>
-                <img src="assets/interior/bedroom.jpg" alt="Interior painting example">
-                <img src="assets/interior/bedroom.jpg" alt="Interior painting example">
-                <img src="assets/interior/bedroom.jpg" alt="Interior painting example">
-            </section>
-            
-            <section class="service-card">
-                <h3>Exterior Painting</h3>
-                <img src="assets/exterior/house.jpg" alt="Exterior painting example">
-                <a href="assets/exterior/house.jpg" class="download-link">Download Sample</a>
-                <img src="assets/exterior/house.jpg" alt="Exterior painting example">
-            </section>
-            
-            <section class="service-card">
-                <h3>Commercial Painting</h3>
-                <img src="assets/commercial/office.jpg" alt="Commercial painting example">
-                <img src="assets/commercial/office.jpg" alt="Commercial painting example">
-            </section>
-            
-            <section class="service-card">
-                <h3>Wall Art</h3>
-                <img src="assets/wall-art/mural.jpg" alt="Wall art example">
-                <img src="assets/wall-art/mural.jpg" alt="Wall art example">
-            </section>
-        </div>
-
-        <!-- Videos Section -->
-        <h3 class="video-heading">Video Preview</h3>
-        <div class="video-grid">
-            <div class="video-card">
-                <video controls>
-                    <source src="assets/videos/painting.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <a href="assets/videos/painting.mp4" class="download-link">Download Video</a>
-            </div>
-            
-            <div class="video-card">
-                <video controls>
-                    <source src="assets/videos/painting.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <a href="assets/videos/painting.mp4" class="download-link">Download Video</a>
-            </div>
-            
-            <div class="video-card">
-                <video controls>
-                    <source src="assets/videos/painting.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <a href="assets/videos/painting.mp4" class="download-link">Download Video</a>
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="main-footer">
-        <section class="footer-about">
-            <p>We offer our services nationwide, just a call, email or chat away. Contact us for your indoor and outdoor painting, wall art, murals, commercial painting and fixing of 3D wall panels. Beauty and quality is our watchword. Our head office is located in Benin City, Edo State.</p>
+        <section class="teaser col-1-3">
+           <h5> Exterior painting </h5>
+           <div class="image-container" data-full="https://images.unsplash.com/photo-1582407947304-fd86f028f716">
+                <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=600&q=80" alt="House exterior">
+           </div>
+           <div class="image-container" data-full="https://images.unsplash.com/photo-1568605114967-8130f3a36994">
+                <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=600&q=80" alt="Building facade">
+           </div>
         </section>
         
+        <section class="teaser col-1-3">
+            <h5>commercial painting</h5>
+            <div class="image-container" data-full="https://images.unsplash.com/photo-1497366754035-f200968a6e72">
+                <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=600&q=80" alt="Office painting">
+            </div>
+            <div class="image-container" data-full="https://images.unsplash.com/photo-1560448204-603b3fc33ddc">
+                <img src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?auto=format&fit=crop&w=600&q=80" alt="Retail space">
+            </div>
+        </section>
+        
+        <section class="teaser col-1-3">
+            <h5>wall art</h5>
+            <div class="image-container" data-full="https://images.unsplash.com/photo-1543857778-c4a1a569e7bd">
+                <img src="https://images.unsplash.com/photo-1543857778-c4a1a569e7bd?auto=format&fit=crop&w=600&q=80" alt="Wall mural">
+            </div>
+            <div class="image-container" data-full="https://images.unsplash.com/photo-1579546929662-711aa81148cf">
+                <img src="https://images.unsplash.com/photo-1579546929662-711aa81148cf?auto=format&fit=crop&w=600&q=80" alt="Abstract wall art">
+            </div>
+        </section>
+    </div>
+
+    <!-- Video Section -->
+    <h5 class="video-heading">Video preview</h5>
+    <div class="grid"> 
+        <section class="teaser vidcol-1-3">
+            <video class="videos" controls poster="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=600&q=80">
+                <source src="assets/videos/earth.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+        
+        <section class="teaser vidcol-1-3">
+            <video class="videos" controls poster="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80">
+                <source src="assets/videos/earth.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+        
+        <section class="teaser vidcol-1-3">
+            <video class="videos" controls poster="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=600&q=80">
+                <source src="assets/videos/earth.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </section>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox">
+        <span class="lightbox-close"><i class="fas fa-times"></i></span>
+        <div class="lightbox-nav">
+            <div class="lightbox-prev"><i class="fas fa-chevron-left"></i></div>
+            <div class="lightbox-next"><i class="fas fa-chevron-right"></i></div>
+        </div>
+        <div class="lightbox-content">
+            <img src="" alt="Lightbox Image">
+        </div>
+    </div>
+
+    <!--Footer-->
+    <footer class="primary-footer container group">
+        <section class="hero container">
+            We offer our services nationwide,just a call, email or chat away, call for your indoor 
+            and outdoor painting, wall art, murals, commercial painting and fixing of 3D wall panels. 
+            beauty and quality is our watchword our head office is located in Benin city,Edo state.
+        </section>
         <nav class="footer-nav">
             <a href="index.html">Home</a>
             <a href="services.html">Services</a>
@@ -137,14 +152,9 @@
             <a href="about.html">About</a>
             <a href="contact.html">Contact Us</a>
         </nav>
-        
-        <small class="copyright">&copy; Karizma Kraft <span id="current-year"></span></small>
+        <small class="copyright"> &copy; Goldenglow <span id="current-year"></span> </small>
     </footer>
-
+    
     <script src="script.js"></script>
-    <script>
-        // Current year for copyright
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-    </script>
 </body>
 </html>
